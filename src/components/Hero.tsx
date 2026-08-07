@@ -20,7 +20,7 @@ export function Hero() {
             className="absolute inset-0 -z-10 scale-125 blur-3xl"
             style={{ background: "var(--glow-strong)", borderRadius: "50%" }}
           />
-          <PenguinLogo size={168} className="drop-shadow-[0_0_40px_rgba(140,190,255,0.45)]" />
+          <PenguinLogo size={168} priority className="drop-shadow-[0_0_40px_rgba(140,190,255,0.45)]" />
         </div>
 
         {/* badge de disponibilidade */}
