@@ -18,8 +18,8 @@ export const experiences: Experience[] = [
   {
     id: "napi-space",
     role: {
-      pt: "Educador em Robótica e Astronomia",
-      en: "Robotics & Astronomy Educator",
+      pt: "Iniciação Científica em Robótica e Astronomia",
+      en: "Undergraduate Research in Robotics & Astronomy",
     },
     org: "NAPI SPACE · IFPR × Agência Espacial Brasileira",
     period: { pt: "Desde set 2025", en: "Since Sep 2025" },
