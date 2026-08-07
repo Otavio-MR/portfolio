@@ -1,4 +1,4 @@
-// A MARCA do Otávio: o pinguim low-poly (public/penguin.png).
+// A MARCA do Otavio: o pinguim low-poly (public/penguin.png).
 // Renderiza a imagem direto, sem placeholder, pra não piscar outro ícone antes.
 
 export function PenguinLogo({
@@ -14,7 +14,7 @@ export function PenguinLogo({
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/penguin.png"
-      alt="Otávio"
+      alt="Otavio"
       width={size}
       height={size}
       decoding="async"

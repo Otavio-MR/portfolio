@@ -5,9 +5,9 @@
 
 export const profile = {
   // Nome que aparece no hero e no rodapé
-  name: "Otávio Ramalho",
+  name: "Otavio Ramalho",
   // Como quer ser chamado / handle curto (usado no logo)
-  shortName: "Otávio",
+  shortName: "Otavio",
 
   // Título/subtítulo ao lado do nome (aparece grande no hero)
   headline: {
@@ -23,8 +23,8 @@ export const profile = {
 
   // Texto da seção "Sobre" (use \n\n pra separar parágrafos)
   bio: {
-    pt: "Meu nome é Otávio, estou no último semestre do TADS (Tecnólogo em Análise e Desenvolvimento de Sistemas). Curto muito construir coisas para problemas reais: hoje trabalho com pessoas próximas e realizo diversos projetos acadêmicos, desde interfaces e softwares até sites, para áreas como empresas privadas, projetos pessoais e sistemas voltados à educação. Gosto especialmente da parte de design, sempre buscando deixar a experiência mais prazerosa de usar.\n\nTenho explorado bastante o uso de IA nos meus projetos, sempre como uma ferramenta de auxílio. Estou aberto a novos desafios para explorar e ampliar cada vez mais o meu potencial.",
-    en: "My name is Otávio, and I'm in the last semester of my Systems Analysis and Development degree (TADS). I really enjoy building things that solve real problems: today I work with people close to me and take on many academic projects, from interfaces and software to websites, for areas like private companies, personal projects and education focused systems. I especially love the design side, always making the experience more pleasant to use.\n\nI've been exploring the use of AI across my projects, always as a supporting tool. I'm open to new challenges to keep exploring and growing my potential.",
+    pt: "Meu nome é Otavio, estou no último semestre do TADS (Tecnólogo em Análise e Desenvolvimento de Sistemas). Curto muito construir coisas para problemas reais: hoje trabalho com pessoas próximas e realizo diversos projetos acadêmicos, desde interfaces e softwares até sites, para áreas como empresas privadas, projetos pessoais e sistemas voltados à educação. Gosto especialmente da parte de design, sempre buscando deixar a experiência mais prazerosa de usar.\n\nTenho explorado bastante o uso de IA nos meus projetos, sempre como uma ferramenta de auxílio. Estou aberto a novos desafios para explorar e ampliar cada vez mais o meu potencial.",
+    en: "My name is Otavio, and I'm in the last semester of my Systems Analysis and Development degree (TADS). I really enjoy building things that solve real problems: today I work with people close to me and take on many academic projects, from interfaces and software to websites, for areas like private companies, personal projects and education focused systems. I especially love the design side, always making the experience more pleasant to use.\n\nI've been exploring the use of AI across my projects, always as a supporting tool. I'm open to new challenges to keep exploring and growing my potential.",
   },
 
   // Local (opcional)

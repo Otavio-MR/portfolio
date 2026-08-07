@@ -1,4 +1,4 @@
-# Portfólio, Otávio Ramalho 🐧
+# Portfólio, Otavio Ramalho 🐧
 
 Site de portfólio pessoal, construído com Next.js. Estética "preto cromado" (estilo Vercel), bilíngue (PT/EN), com pinguim como marca.
 
