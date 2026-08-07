@@ -1,26 +1,284 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Portfólio pessoal — estética "preto cromado" (Vercel-style):
+   fundo preto profundo, bordas metálicas, glow frio, grid + noise.
+   ============================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #101012;
+  --surface-3: #16161a;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --foreground: #ededed;
+  --muted: #a1a1a6;
+  --muted-2: #6e6e76;
+
+  /* brilho frio (tema pinguim / gelo) */
+  --glow: rgba(120, 170, 255, 0.18);
+  --glow-strong: rgba(140, 190, 255, 0.35);
+  --chrome-hi: rgba(255, 255, 255, 0.9);
+  --chrome-lo: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--glow-strong);
+  color: #fff;
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #26262b;
+  border-radius: 8px;
+  border: 2px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #35353c;
+}
+
+/* ------------------------------------------------------------
+   Fundos: grid, glow e noise
+   ------------------------------------------------------------ */
+
+/* grade sutil com máscara radial pra sumir nas bordas */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* brilho frio no topo da página */
+.bg-glow-top {
+  background: radial-gradient(
+    ellipse 70% 50% at 50% -10%,
+    var(--glow),
+    transparent 70%
+  );
+}
+
+/* textura de ruído fina por cima de tudo */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------
+   Borda cromada (o efeito metálico da Vercel)
+   ------------------------------------------------------------ */
+.chrome {
+  position: relative;
+  border-radius: 16px;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(180deg, var(--chrome-hi), var(--chrome-lo) 40%, var(--chrome-lo)) border-box;
+  border: 1px solid transparent;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.chrome::after {
+  /* glow interno no topo */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(60% 40% at 50% 0%, rgba(255, 255, 255, 0.06), transparent 70%);
+  pointer-events: none;
+}
+.chrome-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px var(--border-strong),
+    0 20px 60px -20px var(--glow-strong),
+    0 10px 40px -15px rgba(0, 0, 0, 0.8);
+}
+
+/* linha cromada horizontal (divisórias com brilho no meio) */
+.chrome-line {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-strong) 25%,
+    var(--chrome-hi) 50%,
+    var(--border-strong) 75%,
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* pílula/badge cromada */
+.chrome-pill {
+  background:
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.03)) border-box;
+  border: 1px solid transparent;
+}
+
+/* ------------------------------------------------------------
+   Texto cromado (título com gradiente prata)
+   ------------------------------------------------------------ */
+.text-chrome {
+  background: linear-gradient(180deg, #ffffff 0%, #d6d6dc 45%, #8a8a92 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.text-chrome-soft {
+  background: linear-gradient(180deg, #f4f4f6, #9a9aa2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* brilho que desliza (usado no hero) */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shine 6s ease-in-out infinite;
+}
+@keyframes shine {
+  0%,
+  60% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* ------------------------------------------------------------
+   Botões
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary {
+  color: #05070d;
+  background: linear-gradient(180deg, #ffffff, #d5d5db);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 30px -6px var(--glow-strong);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  color: var(--foreground);
+  background:
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.03)) border-box;
+  border: 1px solid transparent;
+}
+.btn-ghost:hover {
+  background:
+    linear-gradient(var(--surface-3), var(--surface-3)) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.08)) border-box;
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------
+   Reveal on scroll
+   ------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .shine::before {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* util: container central */
+.container-x {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
