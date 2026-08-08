@@ -24,7 +24,7 @@ export const projects: Project[] = [
     },
     tags: ["React", "Node.js", "Express", "MongoDB", "Discord API"],
     repo: "https://github.com/modelscolmeia-lgtm/colmeia",
-    live: "", // TODO: colar aqui a URL real do Colmeia no ar (o Otavio vai informar)
+    live: "https://colmeia-ten.vercel.app/",
     status: "online",
     featured: true,
     year: "2025",
