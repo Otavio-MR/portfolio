@@ -25,16 +25,22 @@ export function Projects() {
               className={p.featured ? "sm:col-span-2 lg:col-span-2" : ""}
             >
               <article className="chrome chrome-hover group flex h-full flex-col p-6">
-                {/* topo: ano + destaque */}
-                <div className="mb-4 flex items-center justify-between">
+                {/* topo: ano + destaque + status */}
+                <div className="mb-4 flex items-center justify-between gap-2">
                   <span className="font-mono text-xs text-[var(--muted-2)]">
                     {p.year}
                   </span>
-                  {p.featured && (
-                    <span className="chrome-pill rounded-full px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--glow-strong)]">
-                      {t.projects.featured}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {p.featured && (
+                      <span className="chrome-pill rounded-full px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--glow-strong)]">
+                        {t.projects.featured}
+                      </span>
+                    )}
+                    <StatusBadge
+                      online={p.status === "online"}
+                      label={p.status === "online" ? t.projects.online : t.projects.offline}
+                    />
+                  </div>
                 </div>
 
                 <h3 className="text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-white">
@@ -75,7 +81,11 @@ export function Projects() {
                         href={p.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm text-[var(--muted)] transition-colors hover:text-white"
+                        className={`flex items-center gap-1.5 text-sm transition-colors ${
+                          p.status === "online"
+                            ? "font-medium text-white hover:text-[var(--glow-strong)]"
+                            : "text-[var(--muted)] hover:text-white"
+                        }`}
                       >
                         <ExternalIcon /> {t.projects.viewLive}
                       </a>
@@ -88,6 +98,22 @@ export function Projects() {
         </div>
       </div>
     </section>
+  );
+}
+
+function StatusBadge({ online, label }: { online: boolean; label: string }) {
+  return (
+    <span className="chrome-pill flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
+      {online ? (
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400" />
+        </span>
+      ) : (
+        <span className="h-1.5 w-1.5 rounded-full bg-[var(--muted-2)]" />
+      )}
+      {label}
+    </span>
   );
 }
 

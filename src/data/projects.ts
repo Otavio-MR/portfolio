@@ -8,7 +8,8 @@ export type Project = {
   description: { pt: string; en: string };
   tags: string[];
   repo?: string; // link do GitHub (opcional)
-  live?: string; // link do site no ar (opcional)
+  live?: string; // link do site/app no ar (opcional)
+  status?: "online" | "offline"; // "online" mostra selo verde + botão de acesso
   featured?: boolean; // destaca o card (maior)
   year?: string;
 };
@@ -23,7 +24,8 @@ export const projects: Project[] = [
     },
     tags: ["React", "Node.js", "Express", "MongoDB", "Discord API"],
     repo: "https://github.com/modelscolmeia-lgtm/colmeia",
-    live: "", // TODO: URL da Vercel quando quiser divulgar
+    live: "", // TODO: colar aqui a URL real do Colmeia no ar (o Otavio vai informar)
+    status: "online",
     featured: true,
     year: "2025",
   },
@@ -36,6 +38,7 @@ export const projects: Project[] = [
     },
     tags: ["React Native", "Expo", "TypeScript"],
     repo: "https://github.com/Otavio-MR/EstudaAi",
+    status: "offline",
     year: "2026",
   },
   {
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "Scikit-learn", "Tkinter", "MongoDB"],
     repo: "https://github.com/Otavio-MR/SportFinder",
+    status: "offline",
     year: "2025",
   },
   {
@@ -58,6 +62,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "Tkinter", "MongoDB"],
     repo: "https://github.com/Otavio-MR/Loja-de-Jogos",
+    status: "offline",
     year: "2025",
   },
   {
@@ -69,6 +74,7 @@ export const projects: Project[] = [
     },
     tags: ["React", "React Router", "ViaCEP", "CSS"],
     repo: "https://github.com/Otavio-MR/Loja-de-Salgadinhos",
+    status: "offline",
     year: "2025",
   },
 ];
