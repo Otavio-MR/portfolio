@@ -38,7 +38,7 @@ export const profile = {
     email: "otavio.ramalhomrc@gmail.com",
     github: "https://github.com/Otavio-MR",
     linkedin: "https://www.linkedin.com/in/otavio-marcondes-ramalho-0321492a2/",
-    instagram: "",
+    instagram: "https://www.instagram.com/otavio.ramalhomrc/",
     discord: "",
   },
 
