@@ -11,8 +11,8 @@ export const profile = {
 
   // Título/subtítulo ao lado do nome (aparece grande no hero)
   headline: {
-    pt: "Desenvolvedor Full Stack, apaixonado por design",
-    en: "Full Stack Developer, passionate about design",
+    pt: "Desenvolvedor Front-End apaixonado por design",
+    en: "Front-End Developer, passionate about design",
   },
 
   // Frase de impacto logo abaixo do nome
