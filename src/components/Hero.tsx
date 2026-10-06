@@ -56,6 +56,16 @@ export function Hero() {
           <a href="#contact" className="btn btn-ghost">
             {t.hero.ctaContact}
           </a>
+          <a
+            href="/Otavio-Ramalho-Curriculo.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            <DownloadIcon />
+            {t.hero.cv}
+          </a>
         </div>
       </div>
 
@@ -74,6 +84,14 @@ function ArrowIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+      <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

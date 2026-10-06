@@ -30,6 +30,7 @@ export const dictionary: Record<Lang, Dict> = {
       role: "Desenvolvedor",
       ctaProjects: "Ver projetos",
       ctaContact: "Entrar em contato",
+      cv: "Meu currículo",
       scroll: "Role para explorar",
     },
     about: {
@@ -85,6 +86,7 @@ export const dictionary: Record<Lang, Dict> = {
       role: "Developer",
       ctaProjects: "View projects",
       ctaContact: "Get in touch",
+      cv: "My resume",
       scroll: "Scroll to explore",
     },
     about: {
