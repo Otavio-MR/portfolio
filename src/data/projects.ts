@@ -32,7 +32,7 @@ export const projects: Project[] = [
     status: "online",
     featured: true,
     year: "2025",
-    shots: ["/shots/colmeia/01-desktop.png", "/shots/colmeia/02-mobile.png"],
+    shots: ["/shots/colmeia/01-desktop.png"],
   },
   {
     id: "estudaai",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     live: "https://estudaai-ifpr.vercel.app/",
     status: "online",
     year: "2026",
-    shots: ["/shots/estudaai/01-desktop.png", "/shots/estudaai/02-mobile.png"],
+    shots: ["/shots/estudaai/01-desktop.png"],
   },
   {
     id: "caixa-paella",

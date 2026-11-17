@@ -57,6 +57,8 @@ export const dictionary: Record<Lang, Dict> = {
       offline: "Offline",
       desktop: "App desktop",
       tool: "Ferramenta",
+      close: "Fechar",
+      closeHint: "Esc ou clique fora para fechar",
     },
     certificates: {
       eyebrow: "Formação",
@@ -116,6 +118,8 @@ export const dictionary: Record<Lang, Dict> = {
       offline: "Offline",
       desktop: "Desktop app",
       tool: "Tool",
+      close: "Close",
+      closeHint: "Press Esc or click outside to close",
     },
     certificates: {
       eyebrow: "Education",

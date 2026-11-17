@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useLang } from "@/i18n/LanguageProvider";
 
 // Galeria de prints em tela cheia (lightbox). Abre sem sair do site,
 // sem login e sem instalar nada. Navega por setas, teclado e swipe.
@@ -15,6 +17,7 @@ export function Lightbox({
   startIndex?: number;
   onClose: () => void;
 }) {
+  const { t } = useLang();
   const [i, setI] = useState(startIndex);
   const touchX = useRef<number | null>(null);
 
@@ -45,9 +48,9 @@ export function Lightbox({
 
   const multiple = images.length > 1;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex flex-col bg-black/85 backdrop-blur-xl"
+      className="fixed inset-0 z-[100] flex flex-col bg-black/90 backdrop-blur-xl"
       role="dialog"
       aria-modal="true"
       aria-label={title ?? "Galeria de imagens"}
@@ -68,10 +71,11 @@ export function Lightbox({
         </span>
         <button
           onClick={onClose}
-          aria-label="Fechar"
-          className="chrome-pill flex h-9 w-9 items-center justify-center rounded-lg text-[var(--muted)] transition-colors hover:text-white"
+          aria-label={t.projects.close}
+          className="chrome-pill flex items-center gap-2 rounded-lg px-3.5 py-2 text-sm font-semibold text-white transition-all hover:bg-white/10 hover:text-[var(--glow-strong)]"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          {t.projects.close}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
             <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
           </svg>
         </button>
@@ -136,7 +140,13 @@ export function Lightbox({
         </div>
       )}
 
+      {/* dica de como fechar */}
+      <div className="pointer-events-none pb-5 text-center text-xs text-[var(--muted-2)]">
+        {t.projects.closeHint}
+      </div>
+
       <style>{`@keyframes lb-fade{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}`}</style>
-    </div>
+    </div>,
+    document.body
   );
 }
