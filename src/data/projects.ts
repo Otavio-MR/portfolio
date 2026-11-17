@@ -46,6 +46,7 @@ export const projects: Project[] = [
     live: "https://estudaai-ifpr.vercel.app/",
     status: "online",
     year: "2026",
+    shots: ["/shots/estudaai/01-desktop.png", "/shots/estudaai/02-mobile.png"],
   },
   {
     id: "caixa-paella",
@@ -122,5 +123,6 @@ export const projects: Project[] = [
     repo: "https://github.com/Otavio-MR/Loja-de-Salgadinhos",
     status: "offline",
     year: "2025",
+    shots: ["/shots/vitrine-salgadinhos/01-desktop.png", "/shots/vitrine-salgadinhos/02-mobile.png"],
   },
 ];
