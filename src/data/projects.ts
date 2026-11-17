@@ -12,6 +12,9 @@ export type Project = {
   status?: "online" | "offline"; // "online" mostra selo verde + botão de acesso
   featured?: boolean; // destaca o card (maior)
   year?: string;
+  // Prints das telas (seguras) do projeto. Abrem num lightbox, sem sair do site.
+  // Coloque as imagens em public/shots/<id>/ e referencie o caminho a partir de /.
+  shots?: string[];
 };
 
 export const projects: Project[] = [
@@ -24,20 +27,60 @@ export const projects: Project[] = [
     },
     tags: ["React", "Node.js", "Express", "MongoDB", "Discord API"],
     repo: "https://github.com/modelscolmeia-lgtm/colmeia",
-    live: "https://colmeia-ten.vercel.app/",
+    live: "https://colmeiamodels.vercel.app/",
     status: "online",
     featured: true,
     year: "2025",
+    shots: ["/shots/colmeia/01-desktop.png", "/shots/colmeia/02-mobile.png"],
   },
   {
     id: "estudaai",
     title: "EstudaAí",
     description: {
-      pt: "Aplicativo mobile (React Native + Expo) para ajudar estudantes na preparação para o ENEM, vestibulares e concursos. Reúne resumos, os tópicos que mais caem, apostilas e videoaulas organizados por matéria, com sistema de favoritos. Projeto acadêmico do IFPR.",
-      en: "Mobile app (React Native + Expo) that helps students prepare for Brazil's ENEM, college entrance and public exams. Gathers summaries, most frequent topics, study guides and video lessons organized by subject, with a favorites system. Academic project at IFPR.",
+      pt: "Plataforma web que deixa os editais de concursos públicos mais fáceis de entender: em vez de ler um PDF enorme, você vê um resumo visual com datas, vagas, salários, taxas, local da prova e as matérias que mais valem na nota. Projeto acadêmico em trio no IFPR, full stack (React + Vite no front; Node, Express e MongoDB no back).",
+      en: "Web platform that makes Brazilian public exam notices easier to grasp: instead of reading a huge PDF, you get a visual summary with dates, openings, salaries, fees, exam location and the subjects that weigh most. A trio academic project at IFPR, full stack (React + Vite front; Node, Express and MongoDB back).",
     },
-    tags: ["React Native", "Expo", "TypeScript"],
-    repo: "https://github.com/Otavio-MR/EstudaAi",
+    tags: ["React", "Vite", "Node.js", "Express", "MongoDB"],
+    repo: "https://github.com/JoaoVictor3501/EstudaAi",
+    live: "https://estudaai-ifpr.vercel.app/",
+    status: "online",
+    year: "2026",
+  },
+  {
+    id: "caixa-paella",
+    title: "Caixa Paella",
+    description: {
+      pt: "Caixa registradora web para eventos beneficentes, com impressão automática de vouchers em impressora térmica (um por unidade vendida). Tem perfis de operador e administrador, formas de pagamento, controle de estoque atômico e atalhos de teclado para atender a fila rápido. Primeiro cliente real: a 6ª Paella Mineira Solidária, em prol do Hospital do Câncer de Londrina.",
+      en: "Web cash register for charity events, with automatic voucher printing on thermal printers (one per unit sold). Operator and admin profiles, payment methods, atomic stock control and keyboard shortcuts to keep the line moving. First real client: a charity paella event raising funds for Londrina's cancer hospital.",
+    },
+    tags: ["Node.js", "Express", "MongoDB", "Docker"],
+    repo: "https://github.com/Otavio-MR/caixa-paella",
+    live: "https://caixa-demo.onrender.com/",
+    status: "online",
+    year: "2026",
+    shots: ["/shots/caixa-paella/01-desktop.png"],
+  },
+  {
+    id: "lyendell",
+    title: "Lyendell",
+    description: {
+      pt: "Sistema web de administração para a cidade de RPG de Lyendell: tabelionato, guarda, hospital, congresso, galeria e murais de anúncios e atividades. Tem login por nome de personagem, níveis de acesso por cargo, aprovação de registros, tempo real (WebSocket) e notificações push.",
+      en: "Web administration system for the Lyendell roleplay city: notary, guard, hospital, congress, gallery and announcement boards. Features character-name login, role-based access levels, record approval, real-time updates (WebSocket) and push notifications.",
+    },
+    tags: ["Node.js", "Express", "libSQL", "WebSocket"],
+    repo: "https://github.com/Otavio-MR/lyendell",
+    status: "offline",
+    year: "2026",
+  },
+  {
+    id: "mcp-imagem",
+    title: "MCP Imagens",
+    description: {
+      pt: "Servidor e cliente MCP (Model Context Protocol) em Java que mede imagens e cores com exatidão: conta pixels e calcula contraste pelos critérios de acessibilidade (WCAG). A IA enxerga, mas estima; aqui ela usa números exatos e determinísticos para avaliar paletas e contraste. Voltado a design, front-end e UX.",
+      en: "MCP (Model Context Protocol) server and client in Java that measures images and colors precisely: it counts pixels and computes contrast against WCAG accessibility criteria. AI sees but estimates; here it uses exact, deterministic numbers to assess palettes and contrast. Aimed at design, front-end and UX.",
+    },
+    tags: ["Java", "MCP", "Maven", "WCAG"],
+    repo: "https://github.com/Otavio-MR/mcp-imagem",
     status: "offline",
     year: "2026",
   },

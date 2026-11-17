@@ -1,14 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { useLang } from "@/i18n/LanguageProvider";
 import { projects } from "@/data/projects";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { Lightbox } from "./Lightbox";
 
 export function Projects() {
   const { t, lang } = useLang();
+  const [gallery, setGallery] = useState<{ title: string; images: string[] } | null>(null);
 
   return (
+    <>
     <section id="projects" className="scroll-mt-24 py-24 sm:py-32">
       <div className="container-x">
         <SectionHeading
@@ -64,8 +68,17 @@ export function Projects() {
                 </div>
 
                 {/* links */}
-                {(p.repo || p.live) && (
-                  <div className="mt-6 flex items-center gap-4 border-t border-[var(--border)] pt-4">
+                {(p.repo || p.live || p.shots?.length) && (
+                  <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-[var(--border)] pt-4">
+                    {p.shots && p.shots.length > 0 && (
+                      <button
+                        onClick={() => setGallery({ title: p.title, images: p.shots! })}
+                        className="flex items-center gap-1.5 text-sm font-medium text-white transition-colors hover:text-[var(--glow-strong)]"
+                      >
+                        <ImageIcon /> {t.projects.viewShots}
+                        <span className="font-mono text-xs text-[var(--muted-2)]">({p.shots.length})</span>
+                      </button>
+                    )}
                     {p.repo && (
                       <a
                         href={p.repo}
@@ -98,6 +111,25 @@ export function Projects() {
         </div>
       </div>
     </section>
+
+    {gallery && (
+      <Lightbox
+        images={gallery.images}
+        title={gallery.title}
+        onClose={() => setGallery(null)}
+      />
+    )}
+    </>
+  );
+}
+
+function ImageIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="9" cy="9" r="1.6" />
+      <path d="m21 15-5-5L5 21" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
