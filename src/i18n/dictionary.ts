@@ -55,6 +55,8 @@ export const dictionary: Record<Lang, Dict> = {
       featured: "Destaque",
       online: "Online",
       offline: "Offline",
+      desktop: "App desktop",
+      tool: "Ferramenta",
     },
     certificates: {
       eyebrow: "Formação",
@@ -112,6 +114,8 @@ export const dictionary: Record<Lang, Dict> = {
       featured: "Featured",
       online: "Online",
       offline: "Offline",
+      desktop: "Desktop app",
+      tool: "Tool",
     },
     certificates: {
       eyebrow: "Education",

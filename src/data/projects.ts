@@ -9,7 +9,8 @@ export type Project = {
   tags: string[];
   repo?: string; // link do GitHub (opcional)
   live?: string; // link do site/app no ar (opcional)
-  status?: "online" | "offline"; // "online" mostra selo verde + botão de acesso
+  // online/offline = web; desktop = app que roda localmente; tool = ferramenta/servidor
+  status?: "online" | "offline" | "desktop" | "tool";
   featured?: boolean; // destaca o card (maior)
   year?: string;
   // Prints das telas (seguras) do projeto. Abrem num lightbox, sem sair do site.
@@ -81,7 +82,7 @@ export const projects: Project[] = [
     },
     tags: ["Java", "MCP", "Maven", "WCAG"],
     repo: "https://github.com/Otavio-MR/mcp-imagem",
-    status: "offline",
+    status: "tool",
     year: "2026",
   },
   {
@@ -93,7 +94,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "Scikit-learn", "Tkinter", "MongoDB"],
     repo: "https://github.com/Otavio-MR/SportFinder",
-    status: "offline",
+    status: "desktop",
     year: "2025",
   },
   {
@@ -105,7 +106,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "Tkinter", "MongoDB"],
     repo: "https://github.com/Otavio-MR/Loja-de-Jogos",
-    status: "offline",
+    status: "desktop",
     year: "2025",
   },
   {

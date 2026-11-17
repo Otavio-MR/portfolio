@@ -41,8 +41,16 @@ export function Projects() {
                       </span>
                     )}
                     <StatusBadge
-                      online={p.status === "online"}
-                      label={p.status === "online" ? t.projects.online : t.projects.offline}
+                      status={p.status ?? "offline"}
+                      label={
+                        p.status === "online"
+                          ? t.projects.online
+                          : p.status === "desktop"
+                            ? t.projects.desktop
+                            : p.status === "tool"
+                              ? t.projects.tool
+                              : t.projects.offline
+                      }
                     />
                   </div>
                 </div>
@@ -133,19 +141,45 @@ function ImageIcon() {
   );
 }
 
-function StatusBadge({ online, label }: { online: boolean; label: string }) {
+function StatusBadge({ status, label }: { status: string; label: string }) {
+  let mark: React.ReactNode;
+  if (status === "online") {
+    mark = (
+      <span className="relative flex h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400" />
+      </span>
+    );
+  } else if (status === "desktop") {
+    mark = <MonitorIcon />;
+  } else if (status === "tool") {
+    mark = <TerminalIcon />;
+  } else {
+    mark = <span className="h-1.5 w-1.5 rounded-full bg-[var(--muted-2)]" />;
+  }
   return (
     <span className="chrome-pill flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
-      {online ? (
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400" />
-        </span>
-      ) : (
-        <span className="h-1.5 w-1.5 rounded-full bg-[var(--muted-2)]" />
-      )}
+      {mark}
       {label}
     </span>
+  );
+}
+
+function MonitorIcon() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2.5" y="3.5" width="19" height="13" rx="1.5" />
+      <path d="M8.5 21h7M12 16.5V21" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function TerminalIcon() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2.5" y="4" width="19" height="16" rx="2" />
+      <path d="m6.5 9 3 3-3 3M13 15h4.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
