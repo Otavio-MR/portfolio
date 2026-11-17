@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { StarfieldBackground } from "@/components/StarfieldBackground";
 import { profile } from "@/data/profile";
 
 const geistSans = Geist({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full">
         <LanguageProvider>
+          <StarfieldBackground />
           <div className="noise-overlay" />
           {children}
         </LanguageProvider>
