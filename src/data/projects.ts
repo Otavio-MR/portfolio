@@ -70,8 +70,10 @@ export const projects: Project[] = [
     },
     tags: ["Node.js", "Express", "libSQL", "WebSocket"],
     repo: "https://github.com/Otavio-MR/lyendell",
-    status: "offline",
+    live: "https://casa-luckham.onrender.com/",
+    status: "online",
     year: "2026",
+    shots: ["/shots/lyendell/01-desktop.png"],
   },
   {
     id: "mcp-imagem",
